@@ -1,70 +1,63 @@
-/* General styles */
 body {
+    font-family: Helvetica, sans-serif;
     margin: 0;
-    font-family: Lucida Bright, Helvetica, sans-serif;
-    background: #ecb5d9;
+    background: #f3f4f6;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    background: #b86ebd;
+    color: #fff;
+}
+
+.chart-container {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.calendar {
+    margin-bottom: 24px;
+}
+
+.chart-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 50px);
+    grid-auto-rows: 50px;
+    gap: 4px;
+}
+
+.square {
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border: 1px solid #ccc;
+    cursor: grab;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-}
-
-/* Login container */
-.login-container {
-    background: #fff;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    width: 320px;
-    text-align: center;
-}
-
-/* Heading */
-.login-container h1 {
-    margin-bottom: 20px;
-    color: #333;
-}
-
-/* Form labels */
-.login-container label {
-    display: block;
-    text-align: left;
-    margin-bottom: 5px;
     font-weight: bold;
+    user-select: none;
 }
 
-/* Inputs */
-.login-container input[type="text"],
-.login-container input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    box-sizing: border-box;
-    font-size: 14px;
+.square.dragging {
+    opacity: 0.5;
+    border: 2px dashed #4a90e2;
 }
 
-/* Button */
-.login-container button {
-    width: 100%;
-    padding: 12px;
-    background-color: #4a90e2;
-    color: white;
+.login-button {
+    padding: 6px 12px;
     border: none;
-    border-radius: 6px;
+    border-radius: 4px;
+    background-color: #3b82f6;
+    color: #ffffff;
     cursor: pointer;
-    font-size: 16px;
 }
 
-.login-container button:hover {
-    background-color: #357abd;
-}
-
-
-/* Message (for errors or info) */
-.message {
-    margin-top: 10px;
-    color: red;
-    font-size: 14px;
+.login-button:hover {
+    background-color: #2563eb;
 }

@@ -2,28 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>Welcome</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charting App - Login</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/welcome.css">
 </head>
 <body>
-<div class="login-container">
-    <h1>Charting App Login</h1>
-    <form id="loginForm">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" placeholder="Enter username" required>
 
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" placeholder="Enter password" required>
+<header class="top-bar">
+    <div class="logo">Online Creighton Charting</div>
 
-        <button type="submit">Login</button>
+    <form class="login-form" id="loginForm">
+        <a href="login.html" class="login-button">Login</a>
     </form>
-    <p>Need an account?
-        <a href="signup.html">Click here</a>
-    </p>
-    <p id="loginMessage" class="message"></p>
-</div>
+</header>
 
-<script src="js/script.js"></script>
+<main class="welcome">
+    <h1>Welcome to MyChart</h1>
+    <p>
+        A new web app powered by the Creighton Model
+    </p>
+    <div class ="logo"><img src="assets/cycle.jpg" alt=""></div>
+    <a href="charting.html">Begin Charting</a>
+</main>
+
 </body>
 </html>

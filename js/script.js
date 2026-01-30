@@ -16,7 +16,7 @@ const auth = firebase.auth();
 const db = firebase.firestore();
 
 // ------------------------------
-// LOGIN LOGIC (index.html)
+// LOGIN LOGIC (login.html)
 // ------------------------------
 const loginForm = document.getElementById("loginForm");
 if (loginForm) {
@@ -28,7 +28,7 @@ if (loginForm) {
         auth.signInWithEmailAndPassword(email, password)
             .then((userCredential) => {
                 console.log("Logged in:", userCredential.user);
-                window.location.href = "tracker.html"; // redirect after login
+                window.location.href = "charting.html"; // redirect after login
             })
             .catch((error) => {
                 document.getElementById("loginMessage").textContent = error.message;
@@ -57,7 +57,7 @@ if (signupForm) {
                 });
 
                 // Redirect to login page after signup
-                window.location.href = "index.html";
+                window.location.href = "login.html";
             })
             .catch((error) => {
                 document.getElementById("signupMessage").textContent = error.message;
@@ -73,7 +73,7 @@ auth.onAuthStateChanged((user) => {
     if (user) {
         console.log("User is logged in:", user.email);
         // Optionally redirect if already logged in
-        // window.location.href = "tracker.html";
+        // window.location.href = "charting.html";
     } else {
         console.log("No user logged in");
     }
