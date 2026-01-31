@@ -4,87 +4,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vita Nova Charting</title>
+    <title>Guest Mode - Creighton Charting</title>
     <!-- Fonts -->
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Specific overrides for guest mode */
+        body {
+            /* Distinct background or keeps same? User said "pinkish theme" overall */
+            background: radial-gradient(circle at top right, #fff0f5, #f3e5f5);
+        }
+
+        #guest-banner {
+            background-color: var(--color-primary-pink);
+            color: var(--color-text-main);
+            padding: 10px;
+            text-align: center;
+            font-size: 0.9rem;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .app-wrapper {
+            margin-top: 40px;
+            /* Space for banner */
+        }
+    </style>
 </head>
 
 <body>
+
+    <div id="guest-banner">
+        🌸 You are in Guest Mode. Changes will not be saved. <a href="index.html"
+            style="color: inherit; font-weight: bold;">Sign Up to Save</a>
+    </div>
 
     <div class="app-wrapper">
         <header>
             <div class="logo">
                 <a href="index.html"><span>🌸</span> Vita Nova Charting</a>
             </div>
-            <div id="user-info" class="hidden">
-                <span id="user-email"></span>
-                <button id="logout-btn" class="btn-secondary">Logout</button>
+            <div>
+                <a href="index.html" class="btn-secondary">Back to Home</a>
             </div>
         </header>
 
-        <!-- Welcome Container -->
-        <div id="welcome-container">
-            <div class="welcome-hero">
-                <h1>Track Your Fertility with Confidence</h1>
-                <p class="subtitle">A simple, beautiful way to chart your fertility using the Creighton Model System.</p>
-                <div class="hero-actions">
-                    <button id="btn-get-started" class="btn-primary">Login / Sign Up</button>
-                    <button id="btn-guest-mode" class="btn-outline">Try it out (Guest Mode)</button>
-                </div>
-            </div>
-
-            <div class="info-section">
-                <h3>What is the Creighton Model?</h3>
-                <div class="info-cards">
-                    <div class="card">
-                        <span class="icon">🩸</span>
-                        <h4>Biological Markers</h4>
-                        <p>Standardized observation of mucus and bleeding patterns to monitor health.</p>
-                    </div>
-                    <div class="card">
-                        <span class="icon">👶</span>
-                        <h4>Natural Family Planning</h4>
-                        <p>Used to achieve or avoid pregnancy with high effectiveness.</p>
-                    </div>
-                    <div class="card">
-                        <span class="icon">👩‍⚕️</span>
-                        <h4>Women's Health</h4>
-                        <p>Helps identify abnormalities and treat underlying health issues.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Auth Container -->
-        <div id="auth-container" class="hidden">
-            <div class="auth-box" id="login-box">
-                <h2>Welcome Back</h2>
-                <p>Please login to view your charts</p>
-                <form id="login-form">
-                    <input type="email" id="login-email" placeholder="Email" required>
-                    <input type="password" id="login-password" placeholder="Password" required>
-                    <button type="submit" class="btn-primary">Login</button>
-                </form>
-                <button id="show-signup" class="btn-secondary">New here? Create an account</button>
-            </div>
-
-            <div class="auth-box hidden" id="signup-box">
-                <h2>Create Account</h2>
-                <p>Join us to start charting</p>
-                <form id="signup-form">
-                    <input type="email" id="signup-email" placeholder="Email" required>
-                    <input type="password" id="signup-password" placeholder="Password" required>
-                    <button type="submit" class="btn-primary">Sign Up</button>
-                </form>
-                <button id="show-login" class="btn-secondary">Already have an account? Login</button>
-            </div>
-        </div>
-
-        <!-- App Container (Hidden until logged in) -->
-        <div id="app-container" class="hidden">
+        <!-- App Container (Always Visible for Guest) -->
+        <div id="app-container">
             <div class="toolbar">
                 <h3>Observation Stamps</h3>
-
                 <div class="stamp-category">
                     <h4>Quick Stamps</h4>
                     <div class="stamp-group">
@@ -103,6 +72,17 @@
                         <div class="stamp bleeding-light" draggable="true" data-stamp="L" title="Light bleeding">L</div>
                         <div class="stamp bleeding-verylight" draggable="true" data-stamp="VL" title="Very light bleeding">VL</div>
                         <div class="stamp bleeding-brown" draggable="true" data-stamp="B" title="Brown bleeding">B</div>
+                    </div>
+                </div>
+
+                <div class="stamp-category">
+                    <h4>Mucus Color</h4>
+                    <div class="stamp-group">
+                        <div class="stamp mucus-clear" draggable="true" data-stamp="C" title="Clear">C</div>
+                        <div class="stamp mucus-cloudy" draggable="true" data-stamp="C/K" title="Clear/Cloudy">C/K</div>
+                        <div class="stamp mucus-white" draggable="true" data-stamp="W" title="White">W</div>
+                        <div class="stamp mucus-yellow" draggable="true" data-stamp="Y" title="Yellow">Y</div>
+                        <div class="stamp mucus-brown" draggable="true" data-stamp="Br" title="Brown">Br</div>
                     </div>
                 </div>
 
@@ -129,16 +109,6 @@
                 </div>
 
                 <div class="stamp-category">
-                    <h4>Quick Stamps</h4>
-                    <div class="stamp-group">
-                        <div class="stamp sticker-red-bg" draggable="true" data-stamp="RED" title="Red sticker">🔴</div>
-                        <div class="stamp sticker-green-bg" draggable="true" data-stamp="GREEN" title="Green sticker">🟢</div>
-                        <div class="stamp sticker-white-bg" draggable="true" data-stamp="WHITE" title="White sticker">👶</div>
-                        <div class="stamp sticker-greenbaby-bg" draggable="true" data-stamp="GREEN_BABY" title="Green baby sticker">👶</div>
-                    </div>
-                </div>
-
-                <div class="stamp-category">
                     <h4>Special</h4>
                     <div class="stamp-group">
                         <div class="stamp peak-stamp" draggable="true" data-stamp="PEAK" title="Peak day">PEAK</div>
@@ -151,7 +121,7 @@
 
             <div class="chart-area">
                 <div class="chart-header">
-                    <h3>Your Chart</h3>
+                    <h3>Your Chart (Demo)</h3>
                     <div class="view-options">
                         <button id="day-view-btn" class="btn-view-option">Day</button>
                         <button id="week-view-btn" class="btn-view-option active">Week</button>
@@ -165,9 +135,11 @@
         </div>
     </div>
 
-    <!-- Firebase Scripts (compat version for simplicity or modular? using modular is modern standard but CDN invites compat usually. Let's use modules) -->
-    <script type="module" src="js/firebase-config.js"></script>
-    <script type="module" src="js/auth.js"></script>
+    <!-- Only import app.js, no auth.js needed, but we need to tell app.js to init as guest -->
+    <!-- We can set a global var before loading app.js or modify app.js to auto-detect -->
+    <script>
+        window.IS_GUEST_MODE = true;
+    </script>
     <script type="module" src="js/app.js"></script>
 
 </body>
